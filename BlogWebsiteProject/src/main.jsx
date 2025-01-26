@@ -14,6 +14,7 @@ import Signup from "./pages/Signup.jsx"
 import AllPosts from "./pages/AllPosts.jsx"
 import EditPost from "./pages/EditPost.jsx"
 import Post from "./pages/Post.jsx"
+import AddPost from './pages/AddPost.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'home',
+        path: '/',
         element: <Home />,
       },
 
@@ -54,6 +55,16 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/add-post",
+        element: (
+            <AuthLayout authentication>
+                {" "}
+                <AddPost />
+            </AuthLayout>
+        ),
+      },
+
+      {
         path: '/edit-post/:slug',
         element: (
           <AuthLayout authentication>
@@ -72,9 +83,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
-    </Provider>
-  </StrictMode>,
+    </Provider>,
 )

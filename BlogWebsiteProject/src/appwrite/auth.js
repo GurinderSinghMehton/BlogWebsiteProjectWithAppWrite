@@ -16,12 +16,15 @@ export class AuthService{
         try{
             const userAccount = await this.account.create(ID.unique(), email, password, name); 
 
+            console.log(userAccount);
+            
             if(userAccount){
                 return this.login({email, password});
             }else{
                 return userAccount;
             }
         }catch (error){
+            console.log("Appwrite service :: CreateAccount :: error", error);
             throw error;
         }
     }

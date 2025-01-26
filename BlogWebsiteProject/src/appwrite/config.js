@@ -1,5 +1,5 @@
 import conf from '../conf/conf.js';
-import {Client, ID, Databases, Storage, Query} from 'appwrite';
+import {Client, ID, Databases, Storage, Query, ImageFormat} from 'appwrite';
 
 export class Service{
     client = new Client();
@@ -127,12 +127,20 @@ export class Service{
         }
     }
 
-    getFilePreview(fileId){
-        return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
-            fileId
-        )
+    getFilePreview(fileId) {
+        if (!fileId) {
+            console.error("getFilePreview: fileId is required.");
+            return null; // Return null or a placeholder URL if fileId is not provided
+        }
+    
+        try {
+            return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+        } catch (error) {
+            console.error("Appwrite service :: getFilePreview :: error", error);
+            return null; 
+        }
     }
+    
 }
 
 

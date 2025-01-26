@@ -6,7 +6,7 @@ import { login } from "../store/authSlice";
 import { useDispatch } from "react-redux";
 import { useForm } from 'react-hook-form';
 
-function Signup() {
+function SignUp() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -16,9 +16,9 @@ function Signup() {
     const signup = async (data) => {
         setError('');
         try {
-            const userData = await authService.createAccount(data);
+            const account = await authService.createAccount(data);
             
-            if (userData) {
+            if (account) {
                 const userData = await authService.getCurrentUser();
 
                 if (userData) dispatch(login(userData));
@@ -30,10 +30,11 @@ function Signup() {
         }
     }
 
-    return (
-        <div className="flex items-center justify-center my-8">
 
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+    return (
+        <div className="flex items-center justify-center">
+
+            <div className='mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10'>
 
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
@@ -105,4 +106,4 @@ function Signup() {
     )
 }
 
-export default Signup
+export default SignUp;

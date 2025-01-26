@@ -8,10 +8,10 @@ import Button from "./Button";
 import Login from "./Login";
 import PostCard from "./PostCard";
 import Select from "./Select";
-import Signup from "../pages/Signup";
 import RTE from "./RTE";
 import PostForm from "./Post-form/PostForm"
 import AuthLayout from "./AuthLayout"
+import SignUp from "./Signup";
 
 
 export {
@@ -27,6 +27,6 @@ export {
     Select,
     RTE,
     PostForm,
-    Signup,
-    AuthLayout
+    AuthLayout,
+    SignUp
 }
